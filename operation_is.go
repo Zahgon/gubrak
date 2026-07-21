@@ -1,297 +1,51 @@
 package gubrak
 
 import (
-	"math"
 	"reflect"
-	"time"
 )
 
-func typeIs(data any, types ...reflect.Kind) bool {
-	valueOfData := reflect.ValueOf(data)
-	for _, tipe := range types {
-		if tipe == valueOfData.Kind() {
-			return true
-		}
-	}
+func typeIs(data any, types ...reflect.Kind) bool { _ = "STUB: not implemented"; return false }
 
-	return false
-}
+func IsSlice(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsSlice is alias of IsSlice()
-func IsSlice(data any) bool {
-	return typeIs(data, reflect.Slice)
-}
+func IsArray(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsArray is alias of IsArray()
-func IsArray(data any) bool {
-	return typeIs(data, reflect.Array)
-}
-
-// IsSliceOrArray will return true when type of the data is array/slice
-func IsSliceOrArray(data any) bool {
-	return IsSlice(data) || IsArray(data)
-}
+func IsSliceOrArray(data any) bool { _ = "STUB: not implemented"; return false }
 
 var IsArrayOrSlice = IsSliceOrArray
 
-// IsBool will return true when type of the data is boolean
-func IsBool(data any) bool {
-	return typeIs(data,
-		reflect.Bool,
-	)
-}
+func IsBool(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsChannel will return true when type of the data is channel
-func IsChannel(data any) bool {
-	return typeIs(data, reflect.Chan)
-}
+func IsChannel(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsDate will return true when type of the data is time.Time
-func IsDate(data any) bool {
-	if _, ok := data.(time.Time); ok {
-		return true
-	}
+func IsDate(data any) bool { _ = "STUB: not implemented"; return false }
 
-	return false
-}
+func IsString(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsString will return true when type of the data is string
-func IsString(data any) bool {
-	return typeIs(data, reflect.String)
-}
+func IsEmptyString(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsEmptyString will return true when type of the data is string and it's empty
-func IsEmptyString(data any) bool {
-	if data == nil {
-		return true
-	}
+func IsFloat(data any) bool { _ = "STUB: not implemented"; return false }
 
-	if value, ok := data.(string); ok {
-		return value == ""
-	}
+func IsFunction(data any) bool { _ = "STUB: not implemented"; return false }
 
-	return false
-}
+func IsInt(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsFloat will return true when type of the data is floating number
-func IsFloat(data any) bool {
-	return typeIs(data,
-		reflect.Float32,
-		reflect.Float64,
-	)
-}
+func IsMap(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsFunction will return true when type of the data is closure/function
-func IsFunction(data any) bool {
-	return typeIs(data, reflect.Func)
-}
+func IsNil(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsInt will return true when type of the data is numeric integer
-func IsInt(data any) bool {
-	return typeIs(data,
-		reflect.Int,
-		reflect.Int8,
-		reflect.Int16,
-		reflect.Int32,
-		reflect.Int64,
-	)
-}
+func IsNumeric(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsMap will return true when type of the data is hash map
-func IsMap(data any) bool {
-	return typeIs(data, reflect.Map)
-}
+func IsPointer(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsNil will return true when type of the data is nil
-func IsNil(data any) bool {
-	if data == nil {
-		return true
-	}
+func IsStructObject(data any) bool { _ = "STUB: not implemented"; return false }
 
-	valueOfData := reflect.ValueOf(data)
+func IsTrue(data any) bool { _ = "STUB: not implemented"; return false }
 
-	switch valueOfData.Kind() {
-	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Ptr, reflect.Slice, reflect.UnsafePointer:
-		if valueOfData.IsNil() {
-			return true
-		}
-	}
+func IsUint(data any) bool { _ = "STUB: not implemented"; return false }
 
-	return false
-}
+func IsZeroNumber(data any) bool { _ = "STUB: not implemented"; return false }
 
-// IsNumeric will return true when type of the data is numeric (float, uint, int)
-func IsNumeric(data any) bool {
-	return typeIs(data,
-		reflect.Int,
-		reflect.Int8,
-		reflect.Int16,
-		reflect.Int32,
-		reflect.Int64,
-		reflect.Float32,
-		reflect.Float64,
-		reflect.Uint,
-		reflect.Uint8,
-		reflect.Uint16,
-		reflect.Uint32,
-		reflect.Uint64,
-		reflect.Uintptr,
-	)
-}
-
-// IsPointer will return true when type of the data is pointer
-func IsPointer(data any) bool {
-	return typeIs(data, reflect.Ptr)
-}
-
-// IsStructObject will return true when type of the data is object from struct
-func IsStructObject(data any) bool {
-	return typeIs(data, reflect.Struct)
-}
-
-// IsTrue will return true when type of the data is bool, and the value is true
-func IsTrue(data any) bool {
-	if data == nil {
-		return false
-	}
-
-	if value, ok := data.(bool); ok {
-		return value == true
-	}
-
-	return false
-}
-
-// IsUint will return true when type of the data is uint
-func IsUint(data any) bool {
-	return typeIs(data,
-		reflect.Uint,
-		reflect.Uint8,
-		reflect.Uint16,
-		reflect.Uint32,
-		reflect.Uint64,
-		reflect.Uintptr,
-	)
-}
-
-// IsZeroNumber will return true when type of the data is numeric and it's has 0 value
-func IsZeroNumber(data any) bool {
-	if data == nil {
-		return true
-	}
-
-	if value, ok := data.(float32); ok {
-		return value == 0
-	}
-	if value, ok := data.(float64); ok {
-		return value == 0
-	}
-
-	if value, ok := data.(int); ok {
-		return value == 0
-	}
-	if value, ok := data.(int8); ok {
-		return value == 0
-	}
-	if value, ok := data.(int16); ok {
-		return value == 0
-	}
-	if value, ok := data.(int32); ok {
-		return value == 0
-	}
-	if value, ok := data.(int64); ok {
-		return value == 0
-	}
-
-	if value, ok := data.(uint); ok {
-		return value == 0
-	}
-	if value, ok := data.(uint8); ok {
-		return value == 0
-	}
-	if value, ok := data.(uint16); ok {
-		return value == 0
-	}
-	if value, ok := data.(uint32); ok {
-		return value == 0
-	}
-	if value, ok := data.(uint64); ok {
-		return value == 0
-	}
-	if value, ok := data.(uintptr); ok {
-		return value == 0
-	}
-
-	if value, ok := data.(complex64); ok {
-		value128 := complex128(value)
-		return math.Float64bits(real(value128)) == 0 && math.Float64bits(imag(value128)) == 0
-	}
-	if value, ok := data.(complex128); ok {
-		return math.Float64bits(real(value)) == 0 && math.Float64bits(imag(value)) == 0
-	}
-
-	return false
-}
-
-// IsZeroValue reports whether value is the zero value for its type.
-func IsZeroValue(data any) bool {
-	if data == nil {
-		return true
-	} else if value, ok := data.(string); ok {
-		return value == ""
-	} else if value, ok := data.(bool); ok {
-		return value == false
-	} else if value, ok := data.(float32); ok {
-		return value == 0
-	} else if value, ok := data.(float64); ok {
-		return value == 0
-	} else if value, ok := data.(int); ok {
-		return value == 0
-	} else if value, ok := data.(int8); ok {
-		return value == 0
-	} else if value, ok := data.(int16); ok {
-		return value == 0
-	} else if value, ok := data.(int32); ok {
-		return value == 0
-	} else if value, ok := data.(int64); ok {
-		return value == 0
-	} else if value, ok := data.(uint); ok {
-		return value == 0
-	} else if value, ok := data.(uint8); ok {
-		return value == 0
-	} else if value, ok := data.(uint16); ok {
-		return value == 0
-	} else if value, ok := data.(uint32); ok {
-		return value == 0
-	} else if value, ok := data.(uint64); ok {
-		return value == 0
-	} else if value, ok := data.(uintptr); ok {
-		return value == 0
-	} else if value, ok := data.(complex64); ok {
-		value128 := complex128(value)
-		return math.Float64bits(real(value128)) == 0 && math.Float64bits(imag(value128)) == 0
-	} else if value, ok := data.(complex128); ok {
-		return math.Float64bits(real(value)) == 0 && math.Float64bits(imag(value)) == 0
-	} else {
-		if IsStructObject(data) {
-			if IsNil(data) {
-				return true
-			}
-
-			valueOfData := reflect.ValueOf(data)
-			for i := 0; i < valueOfData.NumField(); i++ {
-				if !IsZeroValue(valueOfData.Field(i).Interface()) {
-					return false
-				}
-			}
-		} else {
-			if IsNil(data) {
-				return true
-			}
-		}
-	}
-
-	return true
-}
+func IsZeroValue(data any) bool { _ = "STUB: not implemented"; return false }
 
 var IsEmpty = IsZeroValue

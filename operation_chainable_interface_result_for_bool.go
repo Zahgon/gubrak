@@ -17,31 +17,22 @@ type resultBool struct {
 
 type resultContains = resultBool
 
-func (g *resultBool) ResultAndError() (bool, error) {
-	return g.Result(), g.Error()
-}
+func (g *resultBool) ResultAndError() (bool, error) { _ = "STUB: not implemented"; return false, nil }
 
-func (g *resultBool) Result() bool {
-	v, _ := g.chainable.data.(bool)
-	return v
-}
+func (g *resultBool) Result() bool { _ = "STUB: not implemented"; return false }
 
-func (g *resultBool) Error() error {
-	return g.chainable.lastErrorCaught
-}
+func (g *resultBool) Error() error { _ = "STUB: not implemented"; return nil }
 
-func (g *resultBool) IsError() bool {
-	return g.Error() != nil
-}
+func (g *resultBool) IsError() bool { _ = "STUB: not implemented"; return false }
 
 func (g *resultBool) LastSuccessOperation() Operation {
-	return g.chainable.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultBool) LastErrorOperation() Operation {
-	return g.chainable.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
-func (g *resultBool) LastOperation() Operation {
-	return g.chainable.lastOperation
-}
+func (g *resultBool) LastOperation() Operation { _ = "STUB: not implemented"; return *new(Operation) }

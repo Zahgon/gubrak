@@ -14,31 +14,22 @@ type resultString struct {
 
 type resultJoin = resultString
 
-func (g *resultString) ResultAndError() (string, error) {
-	return g.Result(), g.Error()
-}
+func (g *resultString) ResultAndError() (string, error) { _ = "STUB: not implemented"; return "", nil }
 
-func (g *resultString) Result() string {
-	v, _ := g.chainable.data.(string)
-	return v
-}
+func (g *resultString) Result() string { _ = "STUB: not implemented"; return "" }
 
-func (g *resultString) Error() error {
-	return g.chainable.lastErrorCaught
-}
+func (g *resultString) Error() error { _ = "STUB: not implemented"; return nil }
 
-func (g *resultString) IsError() bool {
-	return g.Error() != nil
-}
+func (g *resultString) IsError() bool { _ = "STUB: not implemented"; return false }
 
 func (g *resultString) LastSuccessOperation() Operation {
-	return g.chainable.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultString) LastErrorOperation() Operation {
-	return g.chainable.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
-func (g *resultString) LastOperation() Operation {
-	return g.chainable.lastOperation
-}
+func (g *resultString) LastOperation() Operation { _ = "STUB: not implemented"; return *new(Operation) }

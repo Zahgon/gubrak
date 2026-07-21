@@ -16,41 +16,29 @@ type resultTwoReturnValue struct {
 type resultPartition = resultTwoReturnValue
 
 func (g *resultTwoReturnValue) ResultAndError() (any, any, error) {
-	return g.ResultTruthy(), g.ResultFalsey(), g.Error()
+	_ = "STUB: not implemented"
+	return *new(any), *new(any), nil
 }
 
-func (g *resultTwoReturnValue) ResultTruthy() any {
-	if v, _ := g.chainable.data.([]any); len(v) > 0 {
-		return v[0]
-	}
+func (g *resultTwoReturnValue) ResultTruthy() any { _ = "STUB: not implemented"; return *new(any) }
 
-	return nil
-}
+func (g *resultTwoReturnValue) ResultFalsey() any { _ = "STUB: not implemented"; return *new(any) }
 
-func (g *resultTwoReturnValue) ResultFalsey() any {
-	if v, _ := g.chainable.data.([]any); len(v) > 1 {
-		return v[1]
-	}
+func (g *resultTwoReturnValue) Error() error { _ = "STUB: not implemented"; return nil }
 
-	return nil
-}
-
-func (g *resultTwoReturnValue) Error() error {
-	return g.chainable.lastErrorCaught
-}
-
-func (g *resultTwoReturnValue) IsError() bool {
-	return g.Error() != nil
-}
+func (g *resultTwoReturnValue) IsError() bool { _ = "STUB: not implemented"; return false }
 
 func (g *resultTwoReturnValue) LastSuccessOperation() Operation {
-	return g.chainable.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultTwoReturnValue) LastErrorOperation() Operation {
-	return g.chainable.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultTwoReturnValue) LastOperation() Operation {
-	return g.chainable.lastOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }

@@ -1,6 +1,5 @@
 package gubrak
 
-// Operation represent the type of chainable operation
 type Operation string
 
 const (
@@ -60,8 +59,6 @@ const (
 	OperationUnionMany        = "UnionMany()"
 )
 
-// IChainable is the base interface for chainable functions
-// It is contain the `IChainableOperation` interface (embedded), and result-related methods
 type IChainable interface {
 	IChainableOperation
 
@@ -74,7 +71,6 @@ type IChainable interface {
 	LastOperation() Operation
 }
 
-// IChainableOperation is interface for chainable functions declaration
 type IChainableOperation interface {
 	Chunk(int) IChainable
 	Compact() IChainable
@@ -128,7 +124,6 @@ type IChainableOperation interface {
 	UnionMany(...any) IChainable
 }
 
-// Chainable is base type of gubrak chainable operations
 type Chainable struct {
 	data                 any
 	lastOperation        Operation
@@ -137,66 +132,33 @@ type Chainable struct {
 	lastErrorCaught      error
 }
 
-// From is the initial function to use gubrak chainable operation.
-// This function requires one argument, the data that are going to be used in operations
-func From(data any) IChainable {
-	g := new(Chainable)
-	g.data = data
-	g.lastSuccessOperation = OperationNone
-	g.lastErrorOperation = OperationNone
-	g.lastOperation = OperationNone
-	g.lastErrorCaught = nil
-	return g
-}
+func From(data any) IChainable { _ = "STUB: not implemented"; return *new(IChainable) }
 
 func (g *Chainable) markError(data any, err error) *Chainable {
-	g.data = data
-	g.lastErrorCaught = err
-	g.lastErrorOperation = g.lastOperation
-	return g
+	_ = "STUB: not implemented"
+	return nil
 }
 
-func (g *Chainable) markResult(data any) *Chainable {
-	g.data = data
-	g.lastSuccessOperation = g.lastOperation
-	return g
-}
+func (g *Chainable) markResult(data any) *Chainable { _ = "STUB: not implemented"; return nil }
 
-func (g *Chainable) shouldReturn() bool {
-	return false
-}
+func (g *Chainable) shouldReturn() bool { _ = "STUB: not implemented"; return false }
 
-// ResultAndError returns the result after operation, and error object
-func (g *Chainable) ResultAndError() (any, error) {
-	return g.Result(), g.Error()
-}
+func (g *Chainable) ResultAndError() (any, error) { _ = "STUB: not implemented"; return *new(any), nil }
 
-// Result returns the result after operation
-func (g *Chainable) Result() any {
-	return g.data
-}
+func (g *Chainable) Result() any { _ = "STUB: not implemented"; return *new(any) }
 
-// Error returns the error object
-func (g *Chainable) Error() error {
-	return g.lastErrorCaught
-}
+func (g *Chainable) Error() error { _ = "STUB: not implemented"; return nil }
 
-// IsError `true` on error, otherwise `false`
-func (g *Chainable) IsError() bool {
-	return g.Error() != nil
-}
+func (g *Chainable) IsError() bool { _ = "STUB: not implemented"; return false }
 
-// LastSuccessOperation return last success operation
 func (g *Chainable) LastSuccessOperation() Operation {
-	return g.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
-// LastErrorOperation return last error operation
 func (g *Chainable) LastErrorOperation() Operation {
-	return g.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
-// LastOperation return last operation
-func (g *Chainable) LastOperation() Operation {
-	return g.lastOperation
-}
+func (g *Chainable) LastOperation() Operation { _ = "STUB: not implemented"; return *new(Operation) }

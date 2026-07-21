@@ -19,31 +19,22 @@ type resultCount = resultNumber
 type resultLastIndexOf = resultNumber
 type resultIndexOf = resultNumber
 
-func (g *resultNumber) ResultAndError() (int, error) {
-	return g.Result(), g.Error()
-}
+func (g *resultNumber) ResultAndError() (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (g *resultNumber) Result() int {
-	v, _ := g.chainable.data.(int)
-	return v
-}
+func (g *resultNumber) Result() int { _ = "STUB: not implemented"; return 0 }
 
-func (g *resultNumber) Error() error {
-	return g.chainable.lastErrorCaught
-}
+func (g *resultNumber) Error() error { _ = "STUB: not implemented"; return nil }
 
-func (g *resultNumber) IsError() bool {
-	return g.Error() != nil
-}
+func (g *resultNumber) IsError() bool { _ = "STUB: not implemented"; return false }
 
 func (g *resultNumber) LastSuccessOperation() Operation {
-	return g.chainable.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultNumber) LastErrorOperation() Operation {
-	return g.chainable.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
-func (g *resultNumber) LastOperation() Operation {
-	return g.chainable.lastOperation
-}
+func (g *resultNumber) LastOperation() Operation { _ = "STUB: not implemented"; return *new(Operation) }

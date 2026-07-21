@@ -12,22 +12,21 @@ type resultNoReturnValue struct {
 
 type resultEach = resultNoReturnValue
 
-func (g *resultNoReturnValue) Error() error {
-	return g.chainable.lastErrorCaught
-}
+func (g *resultNoReturnValue) Error() error { _ = "STUB: not implemented"; return nil }
 
-func (g *resultNoReturnValue) IsError() bool {
-	return g.Error() != nil
-}
+func (g *resultNoReturnValue) IsError() bool { _ = "STUB: not implemented"; return false }
 
 func (g *resultNoReturnValue) LastSuccessOperation() Operation {
-	return g.chainable.lastSuccessOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultNoReturnValue) LastErrorOperation() Operation {
-	return g.chainable.lastErrorOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
 
 func (g *resultNoReturnValue) LastOperation() Operation {
-	return g.chainable.lastOperation
+	_ = "STUB: not implemented"
+	return *new(Operation)
 }
